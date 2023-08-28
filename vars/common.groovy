@@ -25,5 +25,5 @@ def unit_test() {
 }
 
 def email(email_note) {
-    mail bcc: '', body: 'JOB Failed ${JOB_BASE_NAME}\n JENKINS_URL - ${JOB_URL}', cc: '', from: 'pcs04031999@gmail.com', replyTo: 'cp7524420@gmail.com', subject: 'failure in contineous integration', to: 'pcs04031999@gmail.com'
+    mail bcc: '', body: "JOB Failed ${JOB_BASE_NAME}\nJENKINS_URL - ${JOB_URL}", cc: '', from: 'pcs04031999@gmail.com', replyTo: 'cp7524420@gmail.com', subject: 'FAILURE IN JENKINS INTEGRATION', to: 'pcs04031999@gmail.com'
 }
