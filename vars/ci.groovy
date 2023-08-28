@@ -29,7 +29,7 @@ def call () {
                         SONAR_PASS = '$(aws ssm get-parameters --region us-east-1 --names sonarqube.pass  --with-decryption --query Parameters[0].Value | sed \'s/"//g\')'
                     }
                     steps {
-                        sh  "sonar-scanner -Dsonar.host.url=http://172.31.13.126:9000 -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASS} -Dsonar.projectKey=${JOB_BASE_NAME}"
+                        sh  "sonar-scanner -Dsonar.host.url=http://18.206.38.189:9000 -Dsonar.login=${SONAR_USER} -Dsonar.password=${SONAR_PASS} -Dsonar.projectKey=${JOB_BASE_NAME}"
                     }
                 }
 
