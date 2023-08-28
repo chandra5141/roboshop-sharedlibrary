@@ -1,6 +1,7 @@
 def compile() {
     if (app_lang == "nodejs") {
         sh 'npm install'
+        sh 'env'
     }
 
     if (app_lang == "maven") {
@@ -24,5 +25,5 @@ def unit_test() {
 }
 
 def email(email_note) {
-    mail bcc: '', body: 'check in jenkins dashboard http://jenkins.chandupcs.online:8080', cc: '', from: 'pcs04031999@gmail.com', replyTo: 'cp7524420@gmail.com', subject: 'failure in contineous integration', to: 'pcs04031999@gmail.com'
+    mail bcc: '', body: 'JOB Failed ${JOB_BASE_NAME}\n JENKINS_URL - ${JOB_URL}', cc: '', from: 'pcs04031999@gmail.com', replyTo: 'cp7524420@gmail.com', subject: 'failure in contineous integration', to: 'pcs04031999@gmail.com'
 }
