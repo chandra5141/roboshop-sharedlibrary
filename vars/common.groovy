@@ -5,9 +5,7 @@ def compile() {
     }
 
     if (app_lang == "maven") {
-        stage('Build Package') {
-            sh "mvn package && cp target/${component}-1.0.jar ${component}.jar"
-        }
+        sh "mvn clean compile"
     }
 }
 
@@ -47,7 +45,7 @@ def artifactpush (){
     }
 
     if (app_lang == "maven") {
-        sh "zip -r ${component}-${TAG_NAME}.zip  ${component}.jar VERSION ${extra_files}"
+        sh "zip -r ${component}-${TAG_NAME}.zip * ${component}.jar VERSION ${extra_files}"
     }
 
 
