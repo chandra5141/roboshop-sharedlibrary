@@ -39,7 +39,7 @@ def artifactpush (){
         sh "zip -r ${component}-${TAG_NAME}.zip node_modules server.js VERSION ${extra_files}"
     }
 
-
+// for nginx and python all files required except jenkinsfile so using -x we can avoid unzipping
     if (app_lang == "Nginx" || app_lang == "python") {
         sh "zip -r ${component}-${TAG_NAME}.zip * -x Jenkinsfile ${extra_files}"
     }

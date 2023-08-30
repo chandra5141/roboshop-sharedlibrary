@@ -1,14 +1,14 @@
 def call() {
-
+// for maven require additional env.SONAR_EXTRA_OPTS = "-Dsonar.java.binaries=./target"
     if(!env.SONAR_EXTRA_OPTS) {
         env.SONAR_EXTRA_OPTS = " "
     }
-//
-//
-//    if(!env.extra_files) {
-//        env.extra_files = " "
-//    }
-//
+
+// cart doesn't require schema file where as user and catalogue require so creating condition extra files to get schema
+    if(!env.extra_files) {
+        env.extra_files = " "
+    }
+// creating a condition to only push code to nexus if tag created based on this the nexus shell command will be executed
     if(!env.TAG_NAME) {
         env.PUSH_CODE = "false"
     } else {
