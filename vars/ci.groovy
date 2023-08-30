@@ -9,11 +9,11 @@ def call() {
 //        env.extra_files = " "
 //    }
 //
-//    if(!env.TAG_NAME) {
-//        env.PUSH_CODE = "false"
-//    } else {
-//        env.PUSH_CODE = "true"
-//    }
+    if(!env.TAG_NAME) {
+        env.PUSH_CODE = "false"
+    } else {
+        env.PUSH_CODE = "true"
+    }
 
     try {
         node('workstation') {
@@ -49,11 +49,11 @@ def call() {
 //            }
 //
 //
-//            if(env.PUSH_CODE == "true") {
-//                stage('Upload Code to Centralized Place') {
-//                    common.artifactpush()
-//                }
-//            }
+            if(env.PUSH_CODE == "true") {
+                stage('Upload Code to Centralized Place') {
+                    common.artifactpush()
+                }
+            }
 
 
         }
