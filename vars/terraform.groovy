@@ -21,7 +21,7 @@ def call(){
 
                 steps{
 
-                    sh "terraform init -backend-config=env-${INFRA_ENV}/state.tfvars"
+                    sh "sudo terraform init -backend-config=env-${INFRA_ENV}/state.tfvars"
                 }
 
 
@@ -30,7 +30,7 @@ def call(){
 
                 steps{
 
-                    sh "terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
+                    sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
                 }
 
 
