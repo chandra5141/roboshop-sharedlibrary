@@ -36,7 +36,7 @@ def call(){
 
             }
 
-            stage('terraform action - ${ACTION}'){
+            stage('terraform action - APPLY/DESTROY'){
                 if ( ACTION == "apply" ) {
                     sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
                 }
