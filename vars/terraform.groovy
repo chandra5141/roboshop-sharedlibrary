@@ -25,19 +25,24 @@ def call(){
 
             }
 
-            stage('terraform action'){
+            stage('terraform plan'){
 
                 steps{
 
                     sh "sudo terraform ${ACTION}  -var-file=env-${INFRA_ENV}/main.tfvars"
 
-                    if ( ACTION == "apply" ) {
-                        sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
-                    }
                 }
 
 
             }
+
+            if ( ACTION == "apply" ) {
+                stage('terraform action - ${ACTION}'){
+                    sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
+                }
+
+            }
+
         }
 
         post{
