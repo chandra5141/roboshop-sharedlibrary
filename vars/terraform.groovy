@@ -36,12 +36,12 @@ def call(){
 
             }
 
-            if ( ACTION == "apply" ) {
-                stage('terraform action - ${ACTION}'){
+            stage('terraform action - ${ACTION}'){
+                if ( ACTION == "apply" ) {
                     sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
                 }
-
             }
+
 
         }
 
