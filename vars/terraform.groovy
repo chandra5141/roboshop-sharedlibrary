@@ -29,7 +29,11 @@ def call(){
 
                 steps{
 
-                    sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
+                    sh "sudo terraform ${ACTION}  -var-file=env-${INFRA_ENV}/main.tfvars"
+
+                    if (${ACTION} == "apply") {
+                        sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
+                    }
                 }
 
 
