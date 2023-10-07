@@ -11,7 +11,7 @@ def call(){
         parameters{
 //          string(name:'INFRA_ENV', defaultValue: '', description: 'enter env like dev or prod')
             choice(name: 'INFRA_ENV', choices: ['dev', 'prod'], description: 'enter env like dev or prod')
-            choice(name: 'ACTION', choices: ['apply', 'destroy', 'plan'], description: 'Pick something')
+            choice(name: 'ACTION', choices: ['apply', 'destroy'], description: 'Pick something')
         }
 
         stages{
@@ -25,19 +25,10 @@ def call(){
 
             }
 
-            stage('terraform plan'){
-
-                steps{
-
-                    sh "sudo terraform ${ACTION}  -var-file=env-${INFRA_ENV}/main.tfvars"
-
-                }
-
-
-            }
 
             stage('terraform action - APPLY/DESTROY'){
-                if ( ACTION == "apply" ) {
+
+                steps {
                     sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
                 }
             }
