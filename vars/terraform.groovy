@@ -22,17 +22,14 @@ def call(){
                     sh "sudo terraform init -backend-config=env-${INFRA_ENV}/state.tfvars"
                 }
 
-
             }
 
-
-            stage('terraform action - APPLY/DESTROY'){
+            stage('terraform action - apply/destroy'){
 
                 steps {
                     sh "sudo terraform ${ACTION} -auto-approve -var-file=env-${INFRA_ENV}/main.tfvars"
                 }
             }
-
 
         }
 
