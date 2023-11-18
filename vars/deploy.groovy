@@ -17,7 +17,7 @@ def  call(){
 //        }
 
         environment {
-            SSH=credentials('SSH')
+            SSH=credentials('aws')
         }
 
 
@@ -34,8 +34,9 @@ def  call(){
             
             
              ##Below are used for mutable approach
-             ##aws ec2 describe-instances     --filters "Name=tag:Name,Values=${APP_ENV}-${COMPONENT}"  | jq ".Reservations[].Instances[].PrivateIpAddress" >/tmp/hosts
-            ##ansible-playbook  -i /tmp/hosts  deploy.yml -e component=${COMPONENT} -e env=${APP_ENV} -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW}       '''
+            aws ec2 describe-instances     --filters "Name=tag:Name,Values=${APP_ENV}-${COMPONENT}"  | jq ".Reservations[].Instances[].PrivateIpAddress" >/tmp/hosts
+            ansible-playbook  -i /tmp/hosts  deploy.yml -e component=${COMPONENT} -e env=${APP_ENV} -e ansible_user=${SSH_USR} -e ansible_password=${SSH_PSW}      
+             '''
                 }
             }
         }
